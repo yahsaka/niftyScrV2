@@ -53,7 +53,11 @@ def main():
             assert_clean(page)
             page.screenshot(path=str(destination / "streamlit-overview-light.png"), full_page=True)
             toggle = page.get_by_label("Dark mode", exact=True)
-            toggle.check()
+
+            # Streamlit visually hides the checkbox input.
+            # Click its visible label instead of calling check() on the hidden input.
+            toggle.locator("xpath=ancestor::label[1]").click()
+
             page.wait_for_timeout(800)
             expect(toggle).to_be_checked()
             assert_clean(page)
