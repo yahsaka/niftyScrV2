@@ -1,8 +1,0 @@
-{
-  "schema_version": 2,
-  "as_of": null,
-  "generated_at": null,
-  "market_regime": "Unknown",
-  "signals": [],
-  "note": "No current market snapshot is bundled. Run the Daily Market Snapshot workflow or refresh from Settings. The old snapshot was preserved in the separate private legacy archive."
-}
