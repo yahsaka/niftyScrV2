@@ -1,0 +1,11 @@
+# Replaces the old keep-awake workflow when these files overwrite an existing repo.
+# No scheduled pings and no attempt to keep a free host running continuously.
+name: Retired keep-awake workflow
+on:
+  workflow_dispatch:
+permissions: {}
+jobs:
+  retired:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Keep-awake pings have been retired. The app safely catches up from market snapshots."
