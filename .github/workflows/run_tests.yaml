@@ -1,0 +1,44 @@
+name: Product tests
+on:
+  push:
+    paths-ignore: ["data/market_snapshot.json.gz", "data/latest_screener_results.json", "data/pipeline_status.json", "docs/**", "**.md"]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      NIFTY_STORAGE: session
+      NIFTY_DEMO: "0"
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: python -m pip install -r requirements-dev.txt
+      - name: Compile and run domain / real Streamlit integration tests
+        run: |
+          python -m compileall -q app.py src ui
+          python -m pytest -q
+          python scripts/verify_repository.py
+      - name: Install Chromium for browser smoke checks
+        run: python -m playwright install --with-deps chromium
+      - name: Check actual table component and shared visual preview
+        run: python scripts/component_checks.py
+      - name: Smoke-test real Streamlit, themes and responsive layouts
+        run: |
+          NIFTY_DEMO=1 python -m streamlit run app.py --server.port 8501 > /tmp/nifty-streamlit.log 2>&1 &
+          python scripts/browser_smoke.py --url http://localhost:8501
+      - name: Upload browser diagnostics on failure
+        if: failure()
+        uses: actions/upload-artifact@v7
+        with:
+          name: browser-diagnostics
+          path: |
+            test-results/
+            /tmp/nifty-streamlit.log
+          retention-days: 7
