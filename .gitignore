@@ -1,0 +1,30 @@
+# Personal data and credentials: never publish these.
+.env
+.env.*
+!.env.example
+.streamlit/secrets.toml
+.local/
+*.sqlite3
+*.sqlite3-*
+*PRIVATE*
+data/paper_trades.json
+data/holdings*
+data/portfolio*
+data/backtest_history.json
+*backup*.json
+legacy-private/
+
+# Generated development files.
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+node_modules/
+.DS_Store
+playwright-report/
+test-results/
+data/ohlcv_cache/
+# The compressed PUBLIC market snapshot is intentionally versioned.
