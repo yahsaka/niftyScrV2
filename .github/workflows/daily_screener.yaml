@@ -1,0 +1,48 @@
+name: Daily Market Snapshot
+on:
+  workflow_dispatch:
+  schedule:
+    # 11:15 UTC = 16:45 IST. Weekday schedule, not an exchange holiday calendar.
+    - cron: "15 11 * * 1-5"
+permissions:
+  contents: write
+concurrency:
+  group: nifty-public-market-snapshot
+  cancel-in-progress: false
+jobs:
+  snapshot:
+    # Opt in to scheduled runs. Manual runs always work.
+    if: github.event_name == 'workflow_dispatch' || vars.RUN_SCHEDULED_SCANS == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install pinned runtime dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Build market snapshot (no personal ledger processing)
+        id: build
+        continue-on-error: true
+        run: python -m src.pipeline
+      - name: Commit only public market outputs and refresh status
+        if: always()
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          # Explicit allowlist; never 'git add data/' or a personal ledger.
+          for path in data/market_snapshot.json.gz data/latest_screener_results.json data/pipeline_status.json; do
+            if [ -f "$path" ]; then git add -- "$path"; fi
+          done
+          if ! git diff --cached --quiet; then
+            git commit -m "Refresh public EOD snapshot [skip ci]"
+            git push
+          fi
+      - name: Mark a failed refresh clearly
+        if: steps.build.outcome == 'failure'
+        run: |
+          echo "Refresh failed. Prior market snapshot retained. See pipeline_status.json and logs."
+          exit 1
