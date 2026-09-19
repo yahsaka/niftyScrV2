@@ -88,7 +88,7 @@ def main():
     if "navigation" not in st.session_state:
         route = st.query_params.get("page", "Overview")
         st.session_state["navigation"] = route if route in screens else "Overview"
-    with st.container(key="navigation"):
+    with st.container(key="navigation-shell"):
         route = st.segmented_control("Workspace navigation", screens, key="navigation", label_visibility="collapsed", width="stretch") or "Overview"
     st.query_params["page"] = route
     if demo:
