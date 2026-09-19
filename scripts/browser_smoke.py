@@ -53,11 +53,8 @@ def main():
             assert_clean(page)
             page.screenshot(path=str(destination / "streamlit-overview-light.png"), full_page=True)
             toggle = page.get_by_label("Dark mode", exact=True)
-
-            # Streamlit visually hides the checkbox input.
-            # Click its visible label instead of calling check() on the hidden input.
+            # Streamlit visually hides the native checkbox; click its visible label.
             toggle.locator("xpath=ancestor::label[1]").click()
-
             page.wait_for_timeout(800)
             expect(toggle).to_be_checked()
             assert_clean(page)
@@ -89,6 +86,11 @@ def main():
                 page.wait_for_timeout(800)
                 assert_clean(page)
                 page.screenshot(path=str(destination / f"streamlit-{label}.png"), full_page=True)
+            # The two densest mobile screens get explicit regression captures.
+            navigation.get_by_role("button", name="Screener", exact=True).click()
+            page.wait_for_timeout(800)
+            assert_clean(page)
+            page.screenshot(path=str(destination / "streamlit-mobile-screener.png"), full_page=True)
             assert not errors, f"Browser JavaScript errors: {errors}"
             print("Real Streamlit browser smoke checks passed: routes, empty filter, row-to-analysis, theme, tablet and mobile.")
         except Exception:

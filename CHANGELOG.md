@@ -1,5 +1,21 @@
 # Changelog
 
+## UI polish follow-up — 2026-09-19
+
+- Switched application, Plotly charts and the custom results table to Google Roboto with system fallbacks.
+- Fixed dark text on teal active navigation, segmented controls and primary actions.
+- Increased secondary-text contrast in light and dark themes.
+- Displayed snapshot refresh time in IST in the user-facing status strip.
+- Added the common data-status strip to Settings and aligned Backtest page naming with navigation.
+- Fixed Portfolio cost-weight and Backtest sensitivity percentage formatting.
+- Standardized card currency formatting to Indian digit grouping.
+- Exported the user-facing “Qualified” label instead of internal “Trade-Ready”.
+- Reduced the visual prominence of the manual Screener selector while preserving a keyboard fallback.
+- Moved Paper-trading backup into a page-level action and reduced oversized empty states.
+- Improved mobile topbar spacing, toggle wrapping, 3×2 navigation balance and sticky first columns in horizontally scrollable tables.
+- Preserved the duplicate Streamlit navigation-key fix and the Playwright visible-label toggle fix.
+
+
 ## Personal workspace redesign — schema version 2
 
 ### Correctness and data

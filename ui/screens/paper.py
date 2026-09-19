@@ -14,6 +14,9 @@ def render(ctx):
     html(page_heading("Paper trading", 'Track the process. <span>Not the promise.</span>',
                       "A cash-only simulation with explicit fills, costs and an audit trail. No live orders.", ctx.snapshot.get("as_of")))
     html(status_strip(ctx.snapshot))
+    backup_left, backup_right = st.columns([3, 1])
+    with backup_right:
+        st.download_button("Backup workspace ↓", export_backup(ctx.workspace), "nifty-workspace-PRIVATE.json", "application/json", width="stretch")
     ledger = ctx.workspace["ledger"]
     has_active = any(t["status"] in {"OPEN", "PENDING"} for t in ledger["trades"])
     auto = ctx.workspace["preferences"].get("auto_process", True)
@@ -41,11 +44,7 @@ def render(ctx):
             html(metric_card(*values))
     if account["unvalued"]:
         st.error("Account equity is not fully valued: " + ", ".join(account["unvalued"]) + ". Missing or revised data is not treated as zero exposure.")
-    c1, c2 = st.columns([2, 1])
-    with c1:
-        st.caption(f"Cash balance {money(account['cash'])} · initial cash {money(ledger['initial_cash'])} · dividend cash credited {money(account['dividends'])}")
-    with c2:
-        st.download_button("Download private workspace backup", export_backup(ctx.workspace), "nifty-workspace-PRIVATE.json", "application/json", width="stretch")
+    st.caption(f"Cash balance {money(account['cash'])} · initial cash {money(ledger['initial_cash'])} · dividend cash credited {money(account['dividends'])}")
     with st.container(border=True, key="nq-panel-paper-equity"):
         html(panel_title("Your simulated account", "Actual cash and quantities; individual trade percentages are never added into an equity curve."))
         if ledger["equity_history"]:

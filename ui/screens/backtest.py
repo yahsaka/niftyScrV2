@@ -9,7 +9,7 @@ from ui.widgets import html, plot, table
 
 
 def render(ctx):
-    html(page_heading("Historical research", 'Test the rules. <span>Question the results.</span>',
+    html(page_heading("Backtest", 'Test the rules. <span>Question the results.</span>',
                       "A per-ticker event study with the same next-open, stop and cost model as paper trading.", ctx.snapshot.get("as_of")))
     html(status_strip(ctx.snapshot))
     options = sorted(ticker for ticker, stock in ctx.snapshot.get("stocks", {}).items() if stock.get("rows"))
@@ -85,7 +85,7 @@ def render(ctx):
             table(report["cost_sensitivity"], [{"key": "cost_bps", "label": "Round-trip fee bps", "format": "number"},
                                               {"key": "trades", "label": "Samples", "format": "number"},
                                               {"key": "mean_return_pct", "label": "Mean net return", "format": "pct"},
-                                              {"key": "win_rate", "label": "Positive-return share", "format": "number"}], "cost-sensitivity", ctx.dark)
+                                              {"key": "win_rate", "label": "Positive-return share", "format": "pct"}], "cost-sensitivity", ctx.dark)
     st.caption(f"Excluded: {report['skipped']['unfinished']} unfinished, {report['skipped']['corporate_action']} corporate-action cases, {report['skipped']['unfundable']} unsized entries. Data errors: {len(report['errors'])}.")
     with st.expander("Methodology, exclusions & saved assumptions"):
         for limitation in report["limitations"]:

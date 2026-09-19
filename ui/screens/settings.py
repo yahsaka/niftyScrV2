@@ -12,7 +12,7 @@ from src.market import ROOT, coverage, save_snapshot
 from src.pipeline import build_snapshot
 from src.screener import RULES
 from src.storage import LocalStore, export_backup, import_backup
-from ui.visuals import metric_card, money, page_heading, panel_title, pretty_date
+from ui.visuals import metric_card, money, page_heading, panel_title, pretty_date, status_strip
 from ui.widgets import html, table
 
 
@@ -24,6 +24,7 @@ def refresh_lock():
 def render(ctx):
     html(page_heading("Workspace settings", 'Make it yours. <span>Keep it understood.</span>',
                       "Manage personal backups, data quality and the assumptions behind every result.", ctx.snapshot.get("as_of")))
+    html(status_strip(ctx.snapshot))
     section = st.segmented_control("Settings section", ["Workspace", "Data & refresh", "Model settings", "Learn"], default="Workspace", key="settings-section") or "Workspace"
     if section == "Workspace":
         workspace_settings(ctx)

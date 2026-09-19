@@ -37,6 +37,7 @@ def render(ctx):
             industry = st.selectbox("Industry", industries, key="screen-industry")
         with c3:
             score = st.slider("Minimum conditions", 0, 6, ctx.strategy.watchlist_min_score, key="screen-score")
+            st.caption(f"{score} of 6 conditions")
         preset = st.segmented_control("View", ["All setups", "Qualified", "Breakouts", "My watchlist"], default="All setups", key="screen-preset") or "All setups"
         with st.expander("Specific conditions & saved views"):
             triggers = st.multiselect("Require all selected conditions", list(RULES), format_func=lambda key: RULES[key][0], key="screen-triggers")
@@ -67,7 +68,8 @@ def render(ctx):
     c1.caption(f"{len(rows)} matching setups · {len(ctx.signals)} in the snapshot · scan uses your saved rule thresholds")
     c2.button("Reset filters", width="stretch", on_click=reset_filters, args=(ctx.strategy.watchlist_min_score,))
     import pandas as pd
-    c3.download_button("Export results", pd.DataFrame(rows).drop(columns=["checks", "triggers"], errors="ignore").to_csv(index=False),
+    export_rows = [{**row, "status": "Qualified" if row.get("status") == "Trade-Ready" else row.get("status")} for row in rows]
+    c3.download_button("Export results", pd.DataFrame(export_rows).drop(columns=["checks", "triggers"], errors="ignore").to_csv(index=False),
                        file_name="nifty-filtered-setups.csv", mime="text/csv", disabled=not rows, width="stretch")
     tickers = [row["ticker"] for row in rows]
     if st.session_state.get("selected_ticker") not in tickers:
@@ -96,7 +98,8 @@ def render(ctx):
                 st.session_state[picker_key] = event["id"]
             elif selected and picker_key not in st.session_state:
                 st.session_state[picker_key] = selected
-            selected = st.selectbox("Inspect a result", tickers, index=None, key=picker_key, placeholder="Choose a stock to inspect")
+            with st.expander("Choose a stock manually · keyboard fallback"):
+                selected = st.selectbox("Stock to inspect", tickers, index=None, key=picker_key, placeholder="Choose a stock to inspect")
             st.session_state["selected_ticker"] = selected
             st.caption("Research scores describe overlapping conditions, not independent evidence or calibrated confidence.")
     with right:

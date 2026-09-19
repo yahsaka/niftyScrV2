@@ -27,7 +27,7 @@ def main():
         page = browser.new_page(viewport={'width': 1440, 'height': 1080}, device_scale_factor=1)
         errors = []
         page.on('pageerror', lambda error: errors.append(str(error)))
-        page.set_content((ROOT/'docs/preview.html').read_text(), wait_until='load')
+        page.set_content((ROOT/'docs/preview.html').read_text(), wait_until='domcontentloaded')
         for label, width, height, dark in [('light',1440,1080,False),('dark',1440,1080,True),('tablet',768,1024,True),('mobile',390,844,False)]:
             page.set_viewport_size({'width':width,'height':height})
             if (page.locator('#theme-toggle').get_attribute('aria-pressed') == 'true') != dark:

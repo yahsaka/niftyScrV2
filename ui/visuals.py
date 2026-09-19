@@ -1,7 +1,8 @@
 """Escaped, reusable HTML visuals; all actionable controls are native/component UI."""
 from html import escape
 import math
-from datetime import datetime
+from datetime import datetime, timezone
+from zoneinfo import ZoneInfo
 from src.freshness import freshness
 
 ICONS = {
@@ -21,10 +22,27 @@ def icon(name="arrow"):
     return f'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{ICONS.get(name, ICONS["arrow"])}</svg>'
 
 
+def _indian_number(value, decimals=0):
+    sign = "-" if value < 0 else ""
+    absolute = abs(float(value))
+    fixed = f"{absolute:.{decimals}f}"
+    whole, dot, fraction = fixed.partition(".")
+    if len(whole) > 3:
+        tail = whole[-3:]
+        head = whole[:-3]
+        groups = []
+        while head:
+            groups.append(head[-2:])
+            head = head[:-2]
+        whole = ",".join(reversed(groups)) + "," + tail
+    suffix = dot + fraction if decimals else ""
+    return sign + whole + suffix
+
+
 def money(value, decimals=0):
     if value is None or not isinstance(value, (float, int)) or not math.isfinite(value):
         return "—"
-    return f"₹{value:,.{decimals}f}"
+    return "₹" + _indian_number(value, decimals)
 
 
 def pct(value, signed=False, decimals=1):
@@ -53,15 +71,19 @@ def status_strip(snapshot):
     status = "Synthetic preview" if snapshot.get("is_demo") else state["status"]
     refresh = snapshot.get("generated_at")
     try:
-        refresh = datetime.fromisoformat(refresh).strftime("%d %b · %H:%M UTC")
+        parsed = datetime.fromisoformat(str(refresh).replace("Z", "+00:00"))
+        if parsed.tzinfo is None:
+            parsed = parsed.replace(tzinfo=timezone.utc)
+        refresh = parsed.astimezone(ZoneInfo("Asia/Kolkata")).strftime("%d %b · %H:%M IST")
     except (TypeError, ValueError):
         refresh = "Not run"
     return f'''<div class="nq-status-strip"><span class="{'nq-warning' if not state['is_fresh'] else ''}">● &nbsp; {escape(status)}</span><span>Prices as of &nbsp;<b>{escape(pretty_date(snapshot.get('as_of')))}</b></span><span>Refreshed &nbsp;<b>{escape(refresh)}</b></span><span>Source &nbsp;<b>{'Synthetic fixtures' if snapshot.get('is_demo') else 'Yahoo Finance'}</b></span></div>'''
 
 
-def metric_card(title, value, foot="", tone="", symbol="arrow"):
+def metric_card(title, value, foot="", tone="", symbol=None):
     tone_class = f" nq-{tone}" if tone else ""
-    return f'<div class="nq-card{tone_class}"><div class="nq-card-title"><span>{escape(str(title))}</span><span class="nq-arrow">{icon(symbol)}</span></div><div class="nq-card-value">{escape(str(value))}</div><div class="nq-card-foot">{escape(foot)}</div></div>'
+    marker = f'<span class="nq-card-icon">{icon(symbol)}</span>' if symbol else ""
+    return f'<div class="nq-card{tone_class}"><div class="nq-card-title"><span>{escape(str(title))}</span>{marker}</div><div class="nq-card-value">{escape(str(value))}</div><div class="nq-card-foot">{escape(foot)}</div></div>'
 
 
 def empty(title, body, symbol="scan"):

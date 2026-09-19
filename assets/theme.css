@@ -1,6 +1,7 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap");
 /* Nifty Quant design system — references: soft bento cards, teal, lime, restraint. */
-:root{--bg:#eff2ee;--card:#ffffff;--card-soft:#f5f7f3;--ink:#172d27;--muted:#6d7d74;--line:#e0e7df;--teal:#105d50;--teal-ink:#eaffef;--lime:#d9f98b;--purple:#a998e4;--positive:#137960;--negative:#b65048;--warning:#98601e;--focus:#738952;--radius:25px}
-html,body,[class*="css"]{font-family:Inter,"Segoe UI",Arial,sans-serif}
+:root{--bg:#eff2ee;--card:#ffffff;--card-soft:#f5f7f3;--ink:#172d27;--muted:#607168;--line:#e0e7df;--teal:#105d50;--teal-ink:#eaffef;--lime:#d9f98b;--purple:#a998e4;--positive:#137960;--negative:#b65048;--warning:#98601e;--focus:#738952;--radius:25px}
+html,body,[class*="css"]{font-family:"Roboto",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
 .stApp,[data-testid="stAppViewContainer"],.nq-preview{background:var(--bg)!important;color:var(--ink)!important}
 [data-testid="stHeader"]{background:transparent!important;height:0}
 [data-testid="stToolbar"]{top:10px;right:12px;opacity:.55}
@@ -35,13 +36,13 @@ p{line-height:1.55}
 .nq-card-title svg{width:16px;height:16px}.nq-card-value{font-size:38px;line-height:1.15;letter-spacing:-1.5px;font-weight:500;white-space:nowrap;margin-top:18px}
 .nq-card-foot{font-size:11px;margin-top:12px;line-height:1.5;color:var(--muted)}
 .nq-teal .nq-card-foot{color:#b6d8cb}.nq-lime .nq-card-foot{color:#506638}.nq-purple .nq-card-foot{color:#69607d}
-.nq-arrow{height:27px;width:27px;background:var(--card-soft);color:var(--ink);border-radius:50%;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0}
-.nq-teal .nq-arrow{background:#337869;color:#ebffef}.nq-lime .nq-arrow{background:#c3e778;color:#1e3322}
+.nq-arrow,.nq-card-icon{height:27px;width:27px;background:var(--card-soft);color:var(--ink);border-radius:50%;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;pointer-events:none}.nq-card-icon svg{width:16px;height:16px}
+.nq-teal .nq-arrow,.nq-teal .nq-card-icon{background:#337869;color:#ebffef}.nq-lime .nq-arrow,.nq-lime .nq-card-icon{background:#c3e778;color:#1e3322}
 .nq-badge{display:inline-flex;align-items:center;gap:5px;border:1px solid var(--line);border-radius:999px;padding:5px 10px;font-size:10px;font-weight:600;letter-spacing:.15px;background:var(--card-soft);color:var(--ink)}
 .nq-badge.nq-good{background:#e8f3df;color:#386043;border-color:#dbe9d2}.nq-badge.nq-warn{background:#fff0d9;color:#815414;border-color:#f2dfc3}
 .nq-badge.nq-muted{background:var(--card-soft);color:var(--muted)}
 .nq-panel-title{font-size:15px;font-weight:600;letter-spacing:-.3px;margin:0 0 4px}.nq-panel-sub{font-size:11px;color:var(--muted);margin:0 0 15px}
-.nq-empty{display:flex;flex-direction:column;justify-content:center;align-items:center;min-height:220px;text-align:center;padding:26px;color:var(--muted)}
+.nq-empty{display:flex;flex-direction:column;justify-content:center;align-items:center;min-height:170px;text-align:center;padding:26px;color:var(--muted)}
 .nq-empty .nq-empty-mark{height:52px;width:52px;border-radius:18px;background:var(--card-soft);display:grid;place-items:center;margin-bottom:18px;color:var(--positive)}
 .nq-empty svg{width:23px;height:23px}.nq-empty strong{font-size:17px;font-weight:550;color:var(--ink);letter-spacing:-.3px;margin:0 0 8px}.nq-empty p{font-size:12px;max-width:330px;margin:0}
 .nq-regime{min-height:290px;position:relative;display:flex;flex-direction:column;justify-content:space-between}
@@ -92,3 +93,47 @@ input,textarea{color:var(--ink)!important;caret-color:var(--ink)!important}
 [data-testid="stNumberInput"] button{background:var(--card-soft)!important;color:var(--ink)!important;border-color:var(--line)!important}
 [data-testid="stProgress"]>div>div{background:var(--line)}
 @media(max-width:640px){[data-testid="stVerticalBlock"][class*="st-key-nq-panel-"]{padding:17px!important}.st-key-topbar [data-testid="stColumn"]:first-child{flex:2 1 65%!important}.st-key-topbar [data-testid="stColumn"]:last-child{flex:1 1 27%!important}}
+
+
+/* UI polish pass — stronger active contrast, primary hierarchy, Roboto and mobile balance. */
+[data-testid="stMarkdownContainer"], [data-testid="stWidgetLabel"], button, input, textarea, select{
+  font-family:"Roboto",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif!important;
+}
+.st-key-navigation button[aria-pressed="true"] *,
+.st-key-navigation button[kind="segmented_controlActive"] *,
+[data-testid="stButtonGroup"] button[aria-pressed="true"] *,
+[data-testid="stButtonGroup"] button[kind="segmented_controlActive"] *{
+  color:var(--teal-ink)!important;
+  fill:currentColor!important;
+}
+[data-testid="stButton"] button[kind="primary"],
+[data-testid="stFormSubmitButton"] button[kind="primary"],
+[data-testid="stBaseButton-primary"],
+[data-testid="stBaseButton-primaryFormSubmit"]{
+  background:var(--teal)!important;
+  border-color:var(--teal)!important;
+  color:var(--teal-ink)!important;
+}
+[data-testid="stButton"] button[kind="primary"] *,
+[data-testid="stFormSubmitButton"] button[kind="primary"] *,
+[data-testid="stBaseButton-primary"] *,
+[data-testid="stBaseButton-primaryFormSubmit"] *{
+  color:var(--teal-ink)!important;
+  fill:currentColor!important;
+}
+[data-testid="stCaptionContainer"], .nq-panel-sub, .nq-card-foot, .nq-subtitle, .nq-rule-note, .nq-company{
+  color:var(--muted)!important;
+}
+[data-testid="stToggle"] p{white-space:nowrap!important}
+
+@media(max-width:640px){
+  [data-testid="stToolbar"]{top:4px!important;right:8px!important}
+  .st-key-topbar{margin-top:28px!important}
+  .st-key-topbar [data-testid="stColumn"]:last-child{flex:1 1 31%!important}
+  [data-testid="stToggle"] p{font-size:11px!important;line-height:1.15!important}
+  .st-key-navigation [data-testid="stButtonGroup"]{gap:4px!important;padding:5px!important}
+  .st-key-navigation [data-testid="stButtonGroup"] button{flex:1 1 31%!important;min-width:0!important;padding-left:6px!important;padding-right:6px!important}
+  .nq-status-strip{line-height:1.45}
+  .nq-empty{min-height:145px;padding:20px}
+  .nq-card-value{margin-top:14px}
+}

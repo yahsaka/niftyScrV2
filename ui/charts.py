@@ -8,7 +8,7 @@ def style(fig, dark=False, height=285):
     colors = tokens(dark)
     fig.update_layout(template="none", height=height, autosize=True,
                       paper_bgcolor=colors["card"], plot_bgcolor=colors["card"],
-                      font=dict(family="Arial, sans-serif", size=11, color=colors["muted"]),
+                      font=dict(family="Roboto, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif", size=11, color=colors["muted"]),
                       margin=dict(l=46, r=18, t=20, b=28),
                       legend=dict(orientation="h", y=1.14, x=0, font=dict(size=10)),
                       hovermode="x unified", hoverlabel=dict(bgcolor=colors["card"], font_color=colors["ink"]),

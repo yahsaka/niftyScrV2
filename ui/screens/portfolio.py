@@ -36,7 +36,7 @@ def render(ctx):
                     {"key": "quantity", "label": "Qty", "format": "number", "align": "right"},
                     {"key": "value", "label": "Value", "format": "money", "align": "right"},
                     {"key": "pnl_pct", "label": "P&L", "format": "pct", "align": "right"},
-                    {"key": "weight_pct", "label": "Cost weight", "format": "number", "align": "right"},
+                    {"key": "weight_pct", "label": "Cost weight", "format": "pct", "align": "right"},
                     {"key": "trend", "label": "Trend", "format": "status"},
                 ], "holdings-table", ctx.dark)
                 st.download_button("Export valued holdings", pd.DataFrame(report["rows"]).to_csv(index=False), "nifty-holdings-PRIVATE.csv", "text/csv")
