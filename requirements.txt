@@ -1,0 +1,11 @@
+# Direct runtime dependencies, exact versions. Target Python 3.12.
+streamlit==1.55.0
+pandas==2.2.3
+numpy==2.2.6
+plotly==6.5.2
+yfinance==0.2.65
+openpyxl==3.1.5
+python-dotenv==1.2.2
+requests==2.32.5
+pyarrow==20.0.0
+tenacity==9.1.2

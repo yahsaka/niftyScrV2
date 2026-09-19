@@ -1,0 +1,57 @@
+{
+  "scope": "Shared visual preview and actual table component, not full Streamlit",
+  "checks": [
+    {
+      "check": "shared preview light",
+      "passed": true,
+      "viewport": "1440x1080"
+    },
+    {
+      "check": "shared preview dark",
+      "passed": true,
+      "viewport": "1440x1080"
+    },
+    {
+      "check": "shared preview tablet",
+      "passed": true,
+      "viewport": "768x1024"
+    },
+    {
+      "check": "shared preview mobile",
+      "passed": true,
+      "viewport": "390x844"
+    },
+    {
+      "check": "preview navigation and real Plotly figures",
+      "passed": true
+    },
+    {
+      "check": "component text escaping",
+      "passed": true
+    },
+    {
+      "check": "component numeric sorting",
+      "passed": true
+    },
+    {
+      "check": "component keyboard selection returns ID",
+      "passed": true
+    },
+    {
+      "check": "component parent selection synchronization",
+      "passed": true
+    },
+    {
+      "check": "component dark palette",
+      "passed": true
+    },
+    {
+      "check": "component mobile-contained scroll and resize messages",
+      "passed": true
+    },
+    {
+      "check": "component empty state",
+      "passed": true
+    }
+  ]
+}
