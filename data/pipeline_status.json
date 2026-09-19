@@ -1,0 +1,12 @@
+{
+  "attempted_at": "2026-09-19T02:21:42.802199+00:00",
+  "success": true,
+  "coverage": {
+    "universe": 500,
+    "analyzed": 316,
+    "dated": 317,
+    "unassessed": 184,
+    "percent": 63.2
+  },
+  "failed_count": 183
+}

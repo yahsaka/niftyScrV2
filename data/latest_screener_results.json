@@ -1,8 +1,748 @@
 {
-  "schema_version": 2,
-  "as_of": null,
-  "generated_at": null,
-  "market_regime": "Unknown",
-  "signals": [],
-  "note": "No current market snapshot is bundled. Run the Daily Market Snapshot workflow or refresh from Settings. The old snapshot was preserved in the separate private legacy archive."
+  "as_of": "2026-09-18",
+  "generated_at": "2026-09-19T02:21:45.323059+00:00",
+  "snapshot_id": "8cfb41ceaa6900de",
+  "market_regime": "Bearish",
+  "coverage": {
+    "universe": 500,
+    "analyzed": 316,
+    "dated": 317,
+    "unassessed": 184,
+    "percent": 63.2
+  },
+  "failures": [
+    {
+      "ticker": "360ONE",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "3MINDIA",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "ACC",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "AIAENG",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "AADHARHFC",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "AAVAS",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "ABBOTINDIA",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "ADANIENT",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "ABCAPITAL",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "ABREL",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "AEGISVOPAK",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "ALKEM",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "ABDL",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "AMBUJACEM",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "ANGELONE",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "ANTHEM",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "APARINDS",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "APOLLOHOSP",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "APTUS",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "ASAHIINDIA",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "ASTERDM",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "ASTRAL",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "ATUL",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "AUROPHARMA",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "BLS",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "BALRAMCHIN",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "BDL",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "BIKAJI",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "BLUEDART",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "BLUESTARCO",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "BBTC",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "BOSCHLTD",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "MAPMYINDIA",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "CRISIL",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "CANFINHOME",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "CAPLIPOINT",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "CARBORUNIV",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "CARTRADE",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "CEATLTD",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "CEMPRO",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "CHALET",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "CHOICEIN",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "CHOLAHLDNG",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "CHOLAFIN",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "COALINDIA",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "COLPAL",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "CAMS",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "CONCORDBIO",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "COROMANDEL",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "CREDITACC",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "CROMPTON",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "CUMMINSIND",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "CYIENT",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "DCMSHRIRAM",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "DOMS",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "DALBHARAT",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "DEEPAKFERT",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "DELHIVERY",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "DIVISLAB",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "ELECON",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "ELGIEQUIP",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "ERIS",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "FSL",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "FIVESTAR",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "FORCEMOT",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "GABRIEL",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "GALLANTT",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "GLAXO",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "GLENMARK",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "MEDANTA",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "GPIL",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "GRASIM",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "GESHIP",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "FLUOROCHEM",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "HEG",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "HBLENGINE",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "HDFCAMC",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "HAVELLS",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "HINDALCO",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "HINDPETRO",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "HINDUNILVR",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "HONASA",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "HONAUT",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "HYUNDAI",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "ICICIPRULI",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "INDIACEM",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "IOB",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "NAUKRI",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "INTELLECT",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "INDIGO",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "IGIL",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "IPCALAB",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "JBMA",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "JKTYRE",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "JMFINANCIL",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "JSWDULUX",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "JSWENERGY",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "JAINREC",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "J&KBANK",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "JINDALSTEL",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "JWL",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "KPRMILL",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "KEI",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "KAJARIACER",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "KARURVYSYA",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "KAYNES",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "KFINTECH",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "KIRLOSENG",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "KOTAKBANK",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "KIMS",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "LTF",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "LTM",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "LATENTVIEW",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "THELEELA",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "LINDEINDIA",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "LLOYDSME",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "LODHA",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "LUPIN",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "MMTC",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "M&MFIN",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "MFSL",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "MEESHO",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "MINDACORP",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "MOTILALOFS",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "MPHASIS",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "MUTHOOTFIN",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "NATCOPHARM",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "NMDC",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "NATIONALUM",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "NEULANDLAB",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "NUVOCO",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "ONESOURCE",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "POLICYBZR",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "PGEL",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "PNBHOUSING",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "PAGEIND",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "PETRONET",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "PFIZER",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "PHOENIXLTD",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "PIDILITIND",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "POLYCAB",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "PFOCUS",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "RBLBANK",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "RHIM",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "RADICO",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "RAINBOW",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "SBFC",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "SBICARD",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "SBILIFE",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "SRF",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "SAILIFE",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "SAPPHIRE",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "SARDAEN",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "SAREGAMA",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "SHYAMMETL",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "SIGNATURE",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "SOBHA",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "SOLARINDS",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "SUMICHEM",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "SUNPHARMA",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "SUNDARMFIN",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "SUPREMEIND",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "TBOTEK",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "TVSMOTOR",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "TATACONSUM",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "TATAPOWER",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "RAMCOCEM",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "THERMAX",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "TORNTPHARM",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "TARIL",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "TRAVELFOOD",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "TRENT",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "TIINDIA",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "UCOBANK",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "UNOMINDA",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "UPL",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "UTIAMC",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "VTL",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "VIJAYA",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "VOLTAS",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "WHIRLPOOL",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "ZENTEC",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    },
+    {
+      "ticker": "ZENSARTECH",
+      "reason": "Invalid or incomplete OHLCV on 2026-09-18."
+    }
+  ],
+  "signals": []
 }
