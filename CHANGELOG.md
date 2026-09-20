@@ -1,5 +1,35 @@
 # Changelog
 
+## UI correctness pass — 2026-09-20
+
+Verified against the real Streamlit 1.55 runtime in a headless browser (light and dark,
+at 1440 / 1024 / 768 / 390 px), not against the static `docs/preview.html` mock. The
+previous polish pass introduced rules whose selectors either lost specificity battles or
+targeted test IDs Streamlit 1.55 does not emit; those regressions are corrected here.
+
+- **Fixed unreadable text on tinted cards.** A blanket `.nq-card-foot{color:var(--muted)!important}`
+  overrode the teal/lime/purple foot colours, measuring **1.5:1** contrast on the teal regime card
+  (light) and the lime metric card (dark). The muted rule is now scoped to neutral surfaces only;
+  tinted cards measure **5.6:1 / 6.6:1** (WCAG AA).
+- **Fixed invisible primary buttons.** `st.download_button(type="primary")` lost its background to
+  the more specific `[data-testid="stDownloadButton"] button` rule, and `st.form_submit_button`
+  emits `kind="primaryFormSubmit"`, which `button[kind="primary"]` never matched. Both rendered
+  mint text on a white button ("Download full private workspace backup", "Stage next-open paper
+  order"). Primary selectors are now paired with their containers, and hover states added.
+- **Fixed illegible disabled buttons.** Disabled actions no longer rely on `opacity:.45` over a
+  forced light label; they use an explicit soft surface with muted text.
+- **Fixed unthemed alerts and toasts.** Theming targeted `stAlert`, but the painted surface is the
+  child `stAlertContainer`, so every `st.info`/`warning`/`error`/`success` kept Streamlit's default
+  blue or yellow inside a teal palette. Alerts now use the design tokens with a per-severity left accent.
+- **Fixed the dark-mode toggle label wrapping on mobile.** Two rules targeted `[data-testid="stToggle"]`;
+  `st.toggle` renders under `stCheckbox` in 1.55, so the intended `white-space:nowrap` never applied.
+- **Aligned the Screener filter row.** The text input, select and slider no longer drift off a shared
+  baseline, and the slider caption sits with its control.
+- **Added a scroll affordance to the results table.** The final row was clipped mid-height at
+  `max_height` with no indication more rows existed; a fade now appears only while the table is
+  scrollable and clears at the end of the list.
+- **Equalised card heights** in 4-up metric rows so a wrapping foot no longer staggers the row.
+
 ## UI polish follow-up — 2026-09-19
 
 - Switched application, Plotly charts and the custom results table to Google Roboto with system fallbacks.

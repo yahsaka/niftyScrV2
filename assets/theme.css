@@ -88,7 +88,20 @@ input,textarea{color:var(--ink)!important;caret-color:var(--ink)!important}
 [data-testid="stVerticalBlock"][class*="st-key-nq-panel-"]{background:var(--card)!important;border:1px solid var(--line)!important;border-radius:var(--radius)!important;padding:22px!important}
 [data-testid="stButtonGroup"] button{color:var(--ink)!important;background:var(--card-soft)!important;border-color:var(--line)!important;border-radius:999px!important;font-size:11px!important;min-height:36px}
 [data-testid="stButtonGroup"] button[aria-pressed="true"],[data-testid="stButtonGroup"] button[kind="segmented_controlActive"]{background:var(--teal)!important;color:var(--teal-ink)!important;border-color:var(--teal)!important}
-[data-testid="stAlert"]{background:var(--card-soft)!important;border:1px solid var(--line)!important;color:var(--ink)!important}
+/* The painted surface is stAlertContainer, not stAlert; theming only the outer node left
+   Streamlit's default blue/yellow showing through the teal palette. */
+[data-testid="stAlert"]{background:transparent!important;border:0!important;color:var(--ink)!important}
+[data-testid="stAlertContainer"]{background:var(--card-soft)!important;border:1px solid var(--line)!important;
+  border-left:3px solid var(--muted)!important;border-radius:14px!important;color:var(--ink)!important;box-shadow:none!important}
+[data-testid="stAlertContainer"] *{color:var(--ink)!important}
+[data-testid="stAlertContainer"] svg{fill:currentColor!important;color:var(--muted)!important}
+[data-testid="stAlertContainer"] a{color:var(--positive)!important;text-decoration:underline}
+[data-testid="stAlertContentInfo"],[data-testid="stAlertContainer"]:has([data-testid="stAlertContentInfo"]){border-left-color:var(--positive)!important}
+[data-testid="stAlertContentWarning"],[data-testid="stAlertContainer"]:has([data-testid="stAlertContentWarning"]){border-left-color:var(--warning)!important}
+[data-testid="stAlertContentError"],[data-testid="stAlertContainer"]:has([data-testid="stAlertContentError"]){border-left-color:var(--negative)!important}
+[data-testid="stAlertContentSuccess"],[data-testid="stAlertContainer"]:has([data-testid="stAlertContentSuccess"]){border-left-color:var(--positive)!important}
+[data-testid="stToast"]{background:var(--card)!important;border:1px solid var(--line)!important;color:var(--ink)!important}
+[data-testid="stToast"] *{color:var(--ink)!important}
 [data-baseweb="calendar"], [data-baseweb="calendar"]>div{background:var(--card)!important;color:var(--ink)!important}
 [data-testid="stNumberInput"] button{background:var(--card-soft)!important;color:var(--ink)!important;border-color:var(--line)!important}
 [data-testid="stProgress"]>div>div{background:var(--line)}
@@ -106,8 +119,17 @@ input,textarea{color:var(--ink)!important;caret-color:var(--ink)!important}
   color:var(--teal-ink)!important;
   fill:currentColor!important;
 }
+/* Streamlit emits kind="primaryFormSubmit" (not "primary") for st.form_submit_button, and
+   st.download_button(type="primary") is matched by the generic stDownloadButton rule above.
+   Each primary selector is therefore paired with its container so it wins on specificity —
+   otherwise the background stays white while the label is forced to mint = invisible text. */
 [data-testid="stButton"] button[kind="primary"],
+[data-testid="stButton"] button[data-testid="stBaseButton-primary"],
+[data-testid="stDownloadButton"] button[kind="primary"],
+[data-testid="stDownloadButton"] button[data-testid="stBaseButton-primary"],
 [data-testid="stFormSubmitButton"] button[kind="primary"],
+[data-testid="stFormSubmitButton"] button[kind="primaryFormSubmit"],
+[data-testid="stFormSubmitButton"] button[data-testid="stBaseButton-primaryFormSubmit"],
 [data-testid="stBaseButton-primary"],
 [data-testid="stBaseButton-primaryFormSubmit"]{
   background:var(--teal)!important;
@@ -115,25 +137,73 @@ input,textarea{color:var(--ink)!important;caret-color:var(--ink)!important}
   color:var(--teal-ink)!important;
 }
 [data-testid="stButton"] button[kind="primary"] *,
+[data-testid="stDownloadButton"] button[kind="primary"] *,
 [data-testid="stFormSubmitButton"] button[kind="primary"] *,
+[data-testid="stFormSubmitButton"] button[kind="primaryFormSubmit"] *,
 [data-testid="stBaseButton-primary"] *,
 [data-testid="stBaseButton-primaryFormSubmit"] *{
   color:var(--teal-ink)!important;
   fill:currentColor!important;
 }
-[data-testid="stCaptionContainer"], .nq-panel-sub, .nq-card-foot, .nq-subtitle, .nq-rule-note, .nq-company{
+[data-testid="stButton"] button[kind="primary"]:hover,
+[data-testid="stDownloadButton"] button[kind="primary"]:hover,
+[data-testid="stFormSubmitButton"] button[kind="primaryFormSubmit"]:hover,
+[data-testid="stBaseButton-primary"]:hover,
+[data-testid="stBaseButton-primaryFormSubmit"]:hover{
+  background:var(--accent)!important;border-color:var(--accent)!important;
+}
+/* A disabled primary must still read as text, not as a mint-on-mint ghost. */
+[data-testid="stFormSubmitButton"] button:disabled,
+[data-testid="stDownloadButton"] button:disabled,
+[data-testid="stButton"] button:disabled{opacity:1!important;background:var(--card-soft)!important;
+  border-color:var(--line)!important;color:var(--muted)!important;cursor:not-allowed}
+[data-testid="stFormSubmitButton"] button:disabled *,
+[data-testid="stDownloadButton"] button:disabled *,
+[data-testid="stButton"] button:disabled *{color:var(--muted)!important}
+/* Muted secondary text, but ONLY on neutral surfaces. Tinted cards (teal/lime/purple)
+   carry their own foot colour; a blanket !important here drops them to ~1.5:1 contrast. */
+[data-testid="stCaptionContainer"], .nq-panel-sub, .nq-subtitle, .nq-rule-note, .nq-company,
+.nq-card:not(.nq-teal):not(.nq-lime):not(.nq-purple) .nq-card-foot{
   color:var(--muted)!important;
 }
-[data-testid="stToggle"] p{white-space:nowrap!important}
+.nq-teal .nq-card-foot{color:#c6e3d7!important}
+.nq-lime .nq-card-foot{color:#46592f!important}
+.nq-purple .nq-card-foot{color:#5b5175!important}
+.nq-teal .nq-eyebrow,.nq-regime .nq-eyebrow{color:#bcdccd!important}
+.nq-lime .nq-card-title,.nq-lime .nq-card-value{color:#1e3322}
+.nq-purple .nq-card-title,.nq-purple .nq-card-value{color:#2b2447}
+[data-testid="stCheckbox"] p,[data-testid="stToggle"] p{white-space:nowrap!important}
 
 @media(max-width:640px){
   [data-testid="stToolbar"]{top:4px!important;right:8px!important}
   .st-key-topbar{margin-top:28px!important}
   .st-key-topbar [data-testid="stColumn"]:last-child{flex:1 1 31%!important}
-  [data-testid="stToggle"] p{font-size:11px!important;line-height:1.15!important}
+  [data-testid="stCheckbox"] p,[data-testid="stToggle"] p{font-size:11px!important;line-height:1.15!important}
+  [data-testid="stCheckbox"]{justify-content:flex-end}
   .st-key-navigation [data-testid="stButtonGroup"]{gap:4px!important;padding:5px!important}
   .st-key-navigation [data-testid="stButtonGroup"] button{flex:1 1 31%!important;min-width:0!important;padding-left:6px!important;padding-right:6px!important}
   .nq-status-strip{line-height:1.45}
   .nq-empty{min-height:145px;padding:20px}
   .nq-card-value{margin-top:14px}
 }
+
+/* Filter row: text input, select and slider are different heights, so the three columns
+   drifted off a shared baseline and the slider caption floated low. */
+.st-key-nq-panel-screener-filters [data-testid="stHorizontalBlock"]{align-items:flex-start}
+.st-key-nq-panel-screener-filters [data-testid="stWidgetLabel"]{min-height:22px;margin-bottom:2px}
+.st-key-nq-panel-screener-filters [data-testid="stSlider"]{padding-top:2px}
+.st-key-nq-panel-screener-filters [data-testid="stCaptionContainer"]{margin-top:2px}
+[data-testid="stSlider"] [data-baseweb="slider"] div[role="slider"]{outline-offset:2px}
+[data-testid="stSliderTickBarMin"],[data-testid="stSliderTickBarMax"]{color:var(--muted)!important}
+
+/* Equal-height metric cards so a 4-up row does not stagger when one foot wraps. */
+[data-testid="stHorizontalBlock"] [data-testid="stColumn"]>[data-testid="stVerticalBlock"]{height:100%}
+[data-testid="stColumn"] .nq-card{height:100%;display:flex;flex-direction:column}
+[data-testid="stColumn"] .nq-card .nq-card-foot{margin-top:auto;padding-top:12px}
+.nq-card-value{overflow-wrap:anywhere}
+
+/* Expander and form surfaces inherit the card radius rather than Streamlit defaults. */
+[data-testid="stExpander"] details{border-radius:18px!important;overflow:hidden}
+[data-testid="stExpander"] summary:hover{background:var(--card-soft)}
+[data-testid="stFileUploaderDropzone"]:hover{border-color:var(--positive)!important}
+[data-testid="stTooltipHoverTarget"]{color:var(--muted)}
